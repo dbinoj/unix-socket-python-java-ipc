@@ -8,7 +8,7 @@ sock_file = "/tmp/hello_model.sock"
 
 class HelloModel(socketserver.BaseRequestHandler):
     def handle(self):
-        self.data = self.request.recv(1024).strip()
+        self.data = self.request.recv(5242880).strip()
         data_str = bytes.decode(self.data)
         # for i in range(5):
         #     time.sleep(1)
