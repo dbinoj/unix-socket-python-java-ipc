@@ -24,22 +24,23 @@ import time
 
 times = list()
 
+
+name = sys.stdin.read().encode()
+
 for i in range(10000):
     t1 = time.time()
     s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     t2 = time.time()
     sock_file = "/tmp/hello_model.sock"
     t3 = time.time()
-    name = sys.stdin.read().encode()
-    t4 = time.time()
     s.connect(sock_file)
-    t5 = time.time()
+    t4 = time.time()
     s.send(name)
-    t6 = time.time()
+    t5 = time.time()
     data = s.recv(5242880)
-    t7 = time.time()
+    t6 = time.time()
     s.close()
-    t8 = time.time()
-    times.append(t8 - t1)
+    t7 = time.time()
+    times.append(t7 - t1)
 
 print(sum(times)/len(times))
