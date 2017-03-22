@@ -7,7 +7,7 @@ import com.etsy.net.*;
 public class JavaClient {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		if (args.length != 1) {
-			System.out.println("usage: $java -cp juds/juds-0.95.jar: Test <socketfilename>");
+			System.out.println("usage: $java -cp juds/juds-0.95.jar: JavaClient <socketfilename>");
 			System.exit(1);
 		}
 		String socketFile = args[0];
