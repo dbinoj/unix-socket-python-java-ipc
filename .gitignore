@@ -110,6 +110,6 @@ pip-selfcheck.json
 
 .idea
 
-java/juds
+juds/
 *.class
 *.out
