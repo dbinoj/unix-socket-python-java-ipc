@@ -109,3 +109,6 @@ pyvenv.cfg
 pip-selfcheck.json
 
 .idea
+
+java/juds
+*.class
