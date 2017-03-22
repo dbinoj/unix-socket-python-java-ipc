@@ -6,11 +6,12 @@ import com.etsy.net.*;
 
 public class JavaClient {
 	public static void main(String[] args) throws IOException, InterruptedException {
-		if (args.length != 1) {
-			System.out.println("usage: $java -cp juds/juds-0.95.jar: JavaClient <socketfilename>");
+		if (args.length != 2) {
+			System.out.println("usage: $java -cp juds/juds-0.95.jar: JavaClient <socketfilename> <yourname>");
 			System.exit(1);
 		}
 		String socketFile = args[0];
+		String username = args[1];
 
 		long progStartTime = System.nanoTime();
 
@@ -21,8 +22,7 @@ public class JavaClient {
 					JUDS.SOCK_STREAM);
 			InputStream in = socket.getInputStream();
 			OutputStream out = socket.getOutputStream();
-			String text = "Java";
-			out.write(text.getBytes());
+			out.write(username.getBytes());
 			String resp = "";
 			for (int b = 0; ((b = in.read()) >= 0);) {
 				resp += (char) b;
