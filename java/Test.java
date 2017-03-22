@@ -17,7 +17,7 @@ public class Test {
 
 
 			UnixDomainSocketClient socket = new UnixDomainSocketClient(socketFile,
-				JUDS.SOCK_STREAM);
+					JUDS.SOCK_STREAM);
 			long socEndTime = System.nanoTime();
 			InputStream in = socket.getInputStream();
 			OutputStream out = socket.getOutputStream();
@@ -34,9 +34,9 @@ public class Test {
 
 			System.out.println(resp);
 			System.out.println("Nanoseconds to open socket                 : " + 
-				Long.toString(socEndTime - socStartTime));
+					Long.toString(socEndTime - socStartTime));
 			System.out.println("Nanoseconds to send, process & receive data: " + 
-				Long.toString(endTime - startTime));
+					Long.toString(endTime - startTime));
 		}
 
 	}
