@@ -13,26 +13,31 @@ public class Test {
 			System.exit(1);
 		}
 		String socketFile = args[0];
-		long socStartTime = System.nanoTime();
 
-		UnixDomainSocketClient socket = new UnixDomainSocketClient(socketFile,
-				JUDS.SOCK_STREAM);
-		long socEndTime = System.nanoTime();
-		InputStream in = socket.getInputStream();
-		OutputStream out = socket.getOutputStream();
-		long startTime = System.nanoTime();
-		String text = "Java";
-		out.write(text.getBytes());
-		String resp = "";
-		for (int b = 0; ((b = in.read()) >= 0);) {
-            resp += (char) b;
-        }
-        long endTime = System.nanoTime();
+		for (int itr = 0; itr < 100; itr++) {
+            long socStartTime = System.nanoTime();
 
-		socket.close();
-		System.out.println(resp);
-		System.out.println("Nanoseconds to open socket                 : " + Long.toString(socEndTime - socStartTime));
-		System.out.println("Nanoseconds to send, process & receive data: " + Long.toString(endTime - startTime));
+
+            UnixDomainSocketClient socket = new UnixDomainSocketClient(socketFile,
+                    JUDS.SOCK_STREAM);
+            long socEndTime = System.nanoTime();
+            InputStream in = socket.getInputStream();
+            OutputStream out = socket.getOutputStream();
+            long startTime = System.nanoTime();
+            String text = "Java";
+            out.write(text.getBytes());
+            String resp = "";
+            for (int b = 0; ((b = in.read()) >= 0);) {
+                resp += (char) b;
+            }
+            long endTime = System.nanoTime();
+
+            socket.close();
+
+            System.out.println(resp);
+            System.out.println("Nanoseconds to open socket                 : " + Long.toString(socEndTime - socStartTime));
+            System.out.println("Nanoseconds to send, process & receive data: " + Long.toString(endTime - startTime));
+		}
 
 	}
 }
