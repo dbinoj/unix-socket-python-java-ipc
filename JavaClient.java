@@ -6,6 +6,8 @@ import com.etsy.net.*;
 
 public class JavaClient {
 	public static void main(String[] args) throws IOException, InterruptedException {
+		long progStartTime = System.nanoTime();
+
 		if (args.length != 2) {
 			System.out.println("usage: $java -cp juds/juds-0.95.jar: JavaClient <socketfilename> <yourname>");
 			System.exit(1);
@@ -13,7 +15,6 @@ public class JavaClient {
 		String socketFile = args[0];
 		String username = args[1];
 
-		long progStartTime = System.nanoTime();
 
 		for (int itr = 0; itr < 10000; itr++) {
 
